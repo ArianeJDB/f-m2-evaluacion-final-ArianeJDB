@@ -1,5 +1,9 @@
+.container {
+	display: flex;
 
+}
 .item {
+	// display: flex;
 	border: solid 2px black;
 	background: pink;
 	color: deeppink;
@@ -8,4 +12,8 @@
 .item__favourite {
 	background: deeppink;
 	color: pink;
+}
+
+.fav__list {
+	
 }

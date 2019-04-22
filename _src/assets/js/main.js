@@ -19,7 +19,7 @@ const search = () => {
         const showItem = item.show;
         const showTitle = showItem.name;
         const showImages = showItem.image;
-        const showImage = showImages.medium;
+        // const showImage = showImages.medium;
         const image = document.createElement('img');
         const name = document.createElement('h2');
         const itemShow = document.createElement('li');
@@ -29,8 +29,14 @@ const search = () => {
         image.setAttribute('class', 'img');
         const nameText = document.createTextNode(showTitle);
         name.appendChild(nameText);
+        // console.log('IMAGES', showImages);
+        // console.log('MEDIUM', showImage);
+        // console.log('showtitle', showTitle);
 
-        itemShow.addEventListener('click', function(e) {favouriteShow(e, showTitle, showImage);}); //estos parametros se los pasa como "name" y como "image" a la funcion favouriteshow
+
+        itemShow.addEventListener('click', function(e) {
+          favouriteShow(e, showTitle, showImage);
+        }); //estos parametros se los pasa como "name" y como "image" a la funcion favouriteshow
 
         itemShow.appendChild(image);
         itemShow.appendChild(name);
@@ -41,35 +47,44 @@ const search = () => {
             'src',
             'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'
           );
+          
         } else if (showImages !== null) {
           const showImage = showImages.medium;
           image.setAttribute('src', `${showImage}`);
         }
       }
-     
     });
 };
 
-function favouriteShow(e, name, image) {//aqui tenfo acceso al titulo de la pelicula de la peticion, la imagen y el evento del click
+function favouriteShow(e, name, image) {
+  //aqui tenfo acceso al titulo de la pelicula de la peticion, la imagen y el evento del click
 
   const trigger = e.currentTarget;
   if (trigger.classList.contains('item')) {
     trigger.classList.remove('item');
-    trigger.classList.add('item__favourite'); //si la selecciono como fav, la meto en el div de fav azul. o rosa.
+    trigger.classList.add('item__favourite');
   } else {
     trigger.classList.add('item');
     trigger.classList.remove('item__favourite');
   }
-  //añadir al array vacío fav[]
-
+  //-----------añadir al array vacío fav[]
   if (trigger.classList.contains('item__favourite')) {
     fav.push(trigger);
   }
-  // } else {
-  //   fav.pop(trigger);
-  // }
-  console.log(fav);
 
+  //   function remove() {
+  //     const index = fav.indexOf(trigger);
+  // console.log(fav.indexOf(trigger));
+  //     if (trigger.classList.contains('item__favourite')) {
+  //       fav.push(trigger);
+  //     } else if (index !== -1) {
+  //       fav.splice(index, 1); //si es -1 es que no esta, entonces lo pone. Si es !== diferente a -1 es que si está, entonces lo quita al hacerle click
+  //       // fav.pop(trigger);
+  //     }
+  //   }
+  //   remove();
+
+  //-----nuevos elementos para hacer la lista de favoritos
   const imageFav = document.createElement('img');
   const nameFav = document.createElement('h2');
   const liFav = document.createElement('li');
@@ -81,4 +96,7 @@ function favouriteShow(e, name, image) {//aqui tenfo acceso al titulo de la peli
   favList.appendChild(liFav);
 }
 
+// localStorage.setItem('favs', JSON.stringify(fav));
+// const savedFavs = JSON.parse(localStorage.getItem('favs'));
+// console.log(savedFavs.length);
 btn.addEventListener('click', search);

@@ -33,21 +33,20 @@ const search = () => {
         // console.log('MEDIUM', showImage);
         // console.log('showtitle', showTitle);
 
-
         itemShow.addEventListener('click', function(e) {
+          const showImage = showImages.medium;
           favouriteShow(e, showTitle, showImage);
         }); //estos parametros se los pasa como "name" y como "image" a la funcion favouriteshow
 
         itemShow.appendChild(image);
         itemShow.appendChild(name);
         list.appendChild(itemShow);
-        //si no tiene foto
+        //-------------------------si no tiene foto
         if (showImages === null) {
           image.setAttribute(
             'src',
             'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'
           );
-          
         } else if (showImages !== null) {
           const showImage = showImages.medium;
           image.setAttribute('src', `${showImage}`);
@@ -71,6 +70,7 @@ function favouriteShow(e, name, image) {
   if (trigger.classList.contains('item__favourite')) {
     fav.push(trigger);
   }
+  
 
   //   function remove() {
   //     const index = fav.indexOf(trigger);
@@ -94,9 +94,21 @@ function favouriteShow(e, name, image) {
   liFav.appendChild(nameFav);
   liFav.appendChild(imageFav);
   favList.appendChild(liFav);
+  fav[0] = favList;
+  
 }
+localStorage.setItem('favs', JSON.stringify(favList));
+console.log(favList);
+const getFavs = JSON.parse(localStorage.getItem('favs'));
 
-// localStorage.setItem('favs', JSON.stringify(fav));
-// const savedFavs = JSON.parse(localStorage.getItem('favs'));
-// console.log(savedFavs.length);
+  //ME GUARDA EL ARRAY VACIO
+
 btn.addEventListener('click', search);
+
+
+// const getFavs= JSON.parse(localStorage.getItem('favs'));
+// console.log('holA', getFavs.length);
+
+
+
+

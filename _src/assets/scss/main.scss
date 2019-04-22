@@ -1,8 +1,11 @@
 
-
-
 .item {
 	border: solid 2px black;
 	background: pink;
 	color: deeppink;
+}
+
+.item__favourite {
+	background: deeppink;
+	color: pink;
 }

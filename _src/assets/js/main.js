@@ -40,6 +40,23 @@ const search = () => {
           image.setAttribute('src', `${showImage}`);
         }
       }
+      const li = document.querySelectorAll('.item');
+      for (const liItem of li) {
+        const favouriteShow = e => {
+          const trigger = e.currentTarget;
+          if (trigger.classList.contains('item')) {
+            trigger.classList.remove('item');
+            trigger.classList.add('item__favourite');
+          } else {
+            trigger.classList.add('item');
+            trigger.classList.remove('item__favourite');
+          }
+        };
+  
+        liItem.addEventListener('click', favouriteShow);
+      }
+
+      
     });
 };
 

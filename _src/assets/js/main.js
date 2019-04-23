@@ -4,8 +4,25 @@ const field = document.querySelector('.field');
 const btn = document.querySelector('.btn');
 const list = document.querySelector('.list');
 const apiBase = 'http://api.tvmaze.com/search/shows?q=';
-const fav = [];
+let fav = [];
 const favList = document.querySelector('.fav__list');
+
+fav = JSON.parse(localStorage.getItem('favs'));
+
+// if (getFavs !== ' ') {
+for (const items of fav) {
+  const liLS = document.createElement('li');
+  const titleLS = document.createElement('h2');
+  const imageLS = document.createElement('img');
+  const title = items.title;
+  const pic = items.pic;
+  const titleLSText = document.createTextNode(title);
+  console.log(items);
+  console.log(title);
+  console.log(pic);
+}
+// liLS.innerHTML = items;
+//   }} else {
 
 const search = () => {
   list.innerHTML = ' ';
@@ -75,7 +92,6 @@ function favouriteShow(e, name, image) {
       title: name,
       pic: image
     };
-    // console.log('ashjkalsjaklsja', obj);
     fav.push(obj);
   }
 
@@ -91,18 +107,6 @@ function favouriteShow(e, name, image) {
   favList.appendChild(liFav);
 
   localStorage.setItem('favs', JSON.stringify(fav));
-  const getFavs = JSON.parse(localStorage.getItem('favs'));
-  for (const items of getFavs) {
-    console.log('items', items);
-    console.log('yitutlo', getFavs.title);
-    // favList.appendChild(items);
-    
-  }
- 
-  
 }
 
 btn.addEventListener('click', search);
-
-// const getFavs= JSON.parse(localStorage.getItem('favs'));
-// console.log('holA', getFavs.length);

@@ -41,6 +41,7 @@ const search = () => {
         itemShow.appendChild(image);
         itemShow.appendChild(name);
         list.appendChild(itemShow);
+
         //-------------------------si no tiene foto
         if (showImages === null) {
           image.setAttribute(
@@ -68,23 +69,17 @@ function favouriteShow(e, name, image) {
   }
   //-----------añadir al array vacío fav[]
   if (trigger.classList.contains('item__favourite')) {
-    fav.push(trigger);
+    // const title = document.querySelector('h2');
+    // const pic = document.querySelector('img');
+    const obj = {
+      title: name,
+      pic: image
+    };
+    // console.log('ashjkalsjaklsja', obj);
+    fav.push(obj);
   }
-  
 
-  //   function remove() {
-  //     const index = fav.indexOf(trigger);
-  // console.log(fav.indexOf(trigger));
-  //     if (trigger.classList.contains('item__favourite')) {
-  //       fav.push(trigger);
-  //     } else if (index !== -1) {
-  //       fav.splice(index, 1); //si es -1 es que no esta, entonces lo pone. Si es !== diferente a -1 es que si está, entonces lo quita al hacerle click
-  //       // fav.pop(trigger);
-  //     }
-  //   }
-  //   remove();
-
-  //-----nuevos elementos para hacer la lista de favoritos
+  //-----nuevos elementos para PINTAR la lista de favoritos
   const imageFav = document.createElement('img');
   const nameFav = document.createElement('h2');
   const liFav = document.createElement('li');
@@ -94,21 +89,20 @@ function favouriteShow(e, name, image) {
   liFav.appendChild(nameFav);
   liFav.appendChild(imageFav);
   favList.appendChild(liFav);
-  fav[0] = favList;
+
+  localStorage.setItem('favs', JSON.stringify(fav));
+  const getFavs = JSON.parse(localStorage.getItem('favs'));
+  for (const items of getFavs) {
+    console.log('items', items);
+    console.log('yitutlo', getFavs.title);
+    // favList.appendChild(items);
+    
+  }
+ 
   
 }
-localStorage.setItem('favs', JSON.stringify(favList));
-console.log(favList);
-const getFavs = JSON.parse(localStorage.getItem('favs'));
-
-  //ME GUARDA EL ARRAY VACIO
 
 btn.addEventListener('click', search);
 
-
 // const getFavs= JSON.parse(localStorage.getItem('favs'));
 // console.log('holA', getFavs.length);
-
-
-
-

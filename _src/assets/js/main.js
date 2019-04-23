@@ -106,3 +106,10 @@ function favouriteShow(e, name, image) {
 }
 
 btn.addEventListener('click', search);
+
+// listener con la tecla enter (13)
+field.addEventListener('keyup', function(e) {
+  if (e.keyCode === 13) {
+    search();
+  }
+});

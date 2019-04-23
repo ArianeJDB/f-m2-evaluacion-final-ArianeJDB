@@ -6,22 +6,26 @@ const list = document.querySelector('.list');
 const apiBase = 'http://api.tvmaze.com/search/shows?q=';
 const favList = document.querySelector('.fav__list');
 let fav = [];
-//  fav = JSON.parse(localStorage.getItem('favs'));
+//A PARTIDE DE ESTE CAMBIO
 
+fav = JSON.parse(localStorage.getItem('favs'));
 
-// if (getFavs !== ' ') {
-// for (const items of fav) {
-//   const liLS = document.createElement('li');
-//   const titleLS = document.createElement('h2');
-//   const imageLS = document.createElement('img');
-//   const title = items.title;
-//   const pic = items.pic;
-//   const titleLSText = document.createTextNode(title);
-//   console.log(items);
-//   console.log(title);
-//   console.log(pic);
-// }
-
+if (localStorage.getItem('favs') !== null) {
+  for (const item of fav) {
+    const liLS = document.createElement('li');
+    const titleLS = document.createElement('h2');
+    const imageLS = document.createElement('img');
+    const title = item.title;
+    const pic = item.pic;
+    const titleLSText = document.createTextNode(title);
+    titleLS.appendChild(titleLSText);
+    imageLS.setAttribute('src', pic);
+    liLS.appendChild(titleLS);
+    liLS.appendChild(imageLS);
+    favList.appendChild(liLS);
+    //SOLO SE PINTA SI HAY ALGO EN EL LS. SI ESTÁ VACIO, MUERE
+  }
+}
 
 const search = () => {
   list.innerHTML = ' ';

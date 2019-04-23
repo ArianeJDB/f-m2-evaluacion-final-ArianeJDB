@@ -22,7 +22,7 @@ if (localStorage.getItem('favs') !== null) {
     liLS.appendChild(titleLS);
     liLS.appendChild(imageLS);
     favList.appendChild(liLS);
-    //SOLO SE PINTA SI HAY ALGO EN EL LS. SI ESTÁ VACIO, MUERE
+    //SOLO SE PINTA SI HAY ALGO EN EL LS
   }
 }
 
@@ -107,7 +107,7 @@ function favouriteShow(e, name, image) {
 
 btn.addEventListener('click', search);
 
-// listener con la tecla enter (13)
+//------listener con la tecla enter (13)
 field.addEventListener('keyup', function(e) {
   if (e.keyCode === 13) {
     search();

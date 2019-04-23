@@ -48,7 +48,9 @@ li {
 	padding-left: 20px;
 	padding-right: 20px;
 	margin-right: 20px;
-	// background: lightgrey;
+	margin-top: 50px;
+	color: lightgray;
+	border: solid 2px black;
 	
 	img {
 		height: 130px;
@@ -58,7 +60,8 @@ li {
 	.subtitle {
 		font-size: 24px;
 		width: 200px;
-		padding-top: 15px;
+		padding-top: 5px;
+		color: black;
 		
 	}
 }
@@ -71,3 +74,6 @@ li {
 	padding-left: 0px;
 }
 
+.main__list {
+	padding-top: 35px;
+}

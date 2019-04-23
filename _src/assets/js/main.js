@@ -6,7 +6,6 @@ const list = document.querySelector('.list');
 const apiBase = 'http://api.tvmaze.com/search/shows?q=';
 const favList = document.querySelector('.fav__list');
 let fav = [];
-//A PARTIDE DE ESTE CAMBIO
 
 fav = JSON.parse(localStorage.getItem('favs'));
 
@@ -39,19 +38,14 @@ const search = () => {
         const showItem = item.show;
         const showTitle = showItem.name;
         const showImages = showItem.image;
-        // const showImage = showImages.medium;
         const image = document.createElement('img');
         const name = document.createElement('h2');
         const itemShow = document.createElement('li');
         itemShow.setAttribute('class', 'item');
-
         name.setAttribute('class', 'name');
         image.setAttribute('class', 'img');
         const nameText = document.createTextNode(showTitle);
         name.appendChild(nameText);
-        // console.log('IMAGES', showImages);
-        // console.log('MEDIUM', showImage);
-        // console.log('showtitle', showTitle);
 
         itemShow.addEventListener('click', function(e) {
           const showImage = showImages.medium;
@@ -62,7 +56,7 @@ const search = () => {
         itemShow.appendChild(name);
         list.appendChild(itemShow);
 
-        //-------------------------si no tiene foto
+        //-------------------------si no tiene foto:
         if (showImages === null) {
           image.setAttribute(
             'src',
@@ -77,7 +71,7 @@ const search = () => {
 };
 
 function favouriteShow(e, name, image) {
-  //aqui tenfo acceso al titulo de la pelicula de la peticion, la imagen y el evento del click
+  //aqui tengo acceso al titulo de la pelicula de la peticion, la imagen y el evento del click
 
   const trigger = e.currentTarget;
   if (trigger.classList.contains('item')) {
@@ -87,10 +81,9 @@ function favouriteShow(e, name, image) {
     trigger.classList.add('item');
     trigger.classList.remove('item__favourite');
   }
+
   //-----------añadir al array vacío fav[]
   if (trigger.classList.contains('item__favourite')) {
-    // const title = document.querySelector('h2');
-    // const pic = document.querySelector('img');
     const obj = {
       title: name,
       pic: image

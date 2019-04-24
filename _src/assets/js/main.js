@@ -38,9 +38,13 @@ const search = () => {
         const showItem = item.show;
         const showTitle = showItem.name;
         const showImages = showItem.image;
+        const genres = showItem.genres;
+        // console.log(genres);
+       
         const image = document.createElement('img');
         const name = document.createElement('h2');
         const itemShow = document.createElement('li');
+        
         itemShow.setAttribute('class', 'item');
         name.setAttribute('class', 'name');
         image.setAttribute('class', 'img');
@@ -48,12 +52,22 @@ const search = () => {
         name.appendChild(nameText);
 
         itemShow.addEventListener('click', function(e) {
-          const showImage = showImages.medium;
-          favouriteShow(e, showTitle, showImage);
+         console.log(showTitle); // const showImage = showImages.medium;
+          // favouriteShow(e, showTitle, showImage);
         }); //estos parametros se los pasa como "name" y como "image" a la funcion favouriteshow
 
         itemShow.appendChild(image);
         itemShow.appendChild(name);
+        for (const iterator of genres) {
+          console.log('iterator', iterator);
+          const genre = document.createElement('h3');
+          const genreText = document.createTextNode(iterator);
+          genre.appendChild(genreText);
+          itemShow.appendChild(genre);
+
+        }
+        
+       
         list.appendChild(itemShow);
 
         //-------------------------si no tiene foto:
@@ -65,7 +79,11 @@ const search = () => {
         } else if (showImages !== null) {
           const showImage = showImages.medium;
           image.setAttribute('src', `${showImage}`);
+        
+        
         }
+
+        
       }
     });
 };
